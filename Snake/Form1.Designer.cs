@@ -34,6 +34,7 @@
             this.Start_Btn = new System.Windows.Forms.Button();
             this.ScoreTxtBox = new System.Windows.Forms.TextBox();
             this.ScoreLbl = new System.Windows.Forms.Label();
+            this.lblHighScore = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.GameCanvas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,11 +81,21 @@
             this.ScoreLbl.TabIndex = 4;
             this.ScoreLbl.Text = "Score:";
             // 
+            // lblHighScore
+            // 
+            this.lblHighScore.AutoSize = true;
+            this.lblHighScore.Location = new System.Drawing.Point(554, 92);
+            this.lblHighScore.Name = "lblHighScore";
+            this.lblHighScore.Size = new System.Drawing.Size(68, 13);
+            this.lblHighScore.TabIndex = 5;
+            this.lblHighScore.Text = "High Scores:";
+            // 
             // SnakeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 414);
+            this.Controls.Add(this.lblHighScore);
             this.Controls.Add(this.ScoreLbl);
             this.Controls.Add(this.ScoreTxtBox);
             this.Controls.Add(this.Start_Btn);
@@ -107,6 +118,7 @@
         private System.Windows.Forms.Button Start_Btn;
         private System.Windows.Forms.TextBox ScoreTxtBox;
         private System.Windows.Forms.Label ScoreLbl;
+        private System.Windows.Forms.Label lblHighScore;
     }
 }
 

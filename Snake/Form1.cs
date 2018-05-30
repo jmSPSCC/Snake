@@ -17,6 +17,8 @@ namespace Snake
         FoodManager FoodMngr;
         Random r = new Random();
         private int score = 0;
+        private List<int> highScores = new List<int>();
+
         public SnakeForm()
         {
             InitializeComponent();
@@ -123,6 +125,22 @@ namespace Snake
             ToggleTimer();
         }
 
+
+        public void UpdateHighScores()
+        {
+            //add current score
+            highScores.Add(score);
+            //sort
+            //https://stackoverflow.com/questions/3062513/how-can-i-sort-generic-list-desc-and-asc
+            highScores.Sort((a,b) => -1*a.CompareTo(b));
+            //trim
+            while (highScores.Count > 10)
+            {
+                highScores.RemoveAt(highScores.Count - 1);
+            }
+            //show
+
+        }
 
         /*
         private void DareBtn_Click(object sender, EventArgs e)
