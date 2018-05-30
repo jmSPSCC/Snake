@@ -32,7 +32,6 @@
             this.GameCanvas = new System.Windows.Forms.PictureBox();
             this.GameTimer = new System.Windows.Forms.Timer(this.components);
             this.Start_Btn = new System.Windows.Forms.Button();
-            this.DareBtn = new System.Windows.Forms.Button();
             this.ScoreTxtBox = new System.Windows.Forms.TextBox();
             this.ScoreLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.GameCanvas)).BeginInit();
@@ -63,16 +62,6 @@
             this.Start_Btn.UseVisualStyleBackColor = true;
             this.Start_Btn.Click += new System.EventHandler(this.Start_Btn_Click);
             // 
-            // DareBtn
-            // 
-            this.DareBtn.Location = new System.Drawing.Point(553, 379);
-            this.DareBtn.Name = "DareBtn";
-            this.DareBtn.Size = new System.Drawing.Size(206, 23);
-            this.DareBtn.TabIndex = 2;
-            this.DareBtn.Text = "I Dare You To Press Me";
-            this.DareBtn.UseVisualStyleBackColor = true;
-            this.DareBtn.Click += new System.EventHandler(this.DareBtn_Click);
-            // 
             // ScoreTxtBox
             // 
             this.ScoreTxtBox.Enabled = false;
@@ -98,9 +87,11 @@
             this.ClientSize = new System.Drawing.Size(771, 414);
             this.Controls.Add(this.ScoreLbl);
             this.Controls.Add(this.ScoreTxtBox);
-            this.Controls.Add(this.DareBtn);
             this.Controls.Add(this.Start_Btn);
             this.Controls.Add(this.GameCanvas);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SnakeForm";
             this.Text = "Snake";
             ((System.ComponentModel.ISupportInitialize)(this.GameCanvas)).EndInit();
@@ -114,7 +105,6 @@
         private System.Windows.Forms.PictureBox GameCanvas;
         private System.Windows.Forms.Timer GameTimer;
         private System.Windows.Forms.Button Start_Btn;
-        private System.Windows.Forms.Button DareBtn;
         private System.Windows.Forms.TextBox ScoreTxtBox;
         private System.Windows.Forms.Label ScoreLbl;
     }

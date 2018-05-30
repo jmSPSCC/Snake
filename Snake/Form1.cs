@@ -123,6 +123,8 @@ namespace Snake
             ToggleTimer();
         }
 
+
+        /*
         private void DareBtn_Click(object sender, EventArgs e)
         {
             int index = r.Next(4);
@@ -146,5 +148,6 @@ namespace Snake
                     break;
             }
         }
+        */
     }
 }
