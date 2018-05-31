@@ -19,6 +19,8 @@ namespace Snake
         private int score = 0;
         private List<int> highScores = new List<int>();
 
+        public PictureBox Canvas { get { return GameCanvas; } }
+
         public SnakeForm()
         {
             InitializeComponent();
@@ -132,14 +134,39 @@ namespace Snake
             highScores.Add(score);
             //sort
             //https://stackoverflow.com/questions/3062513/how-can-i-sort-generic-list-desc-and-asc
-            highScores.Sort((a,b) => -1*a.CompareTo(b));
+            highScores.Sort((a, b) => -1 * a.CompareTo(b));
             //trim
             while (highScores.Count > 10)
             {
                 highScores.RemoveAt(highScores.Count - 1);
             }
             //show
+            string hs = "High Scores: \n";
+            for (int i = 0; i < highScores.Count; i++)
+            {
+                hs += "\n" + (i+1) + ")  " + highScores[i];
 
+            }
+            lblHighScore.Text = hs;
+        }
+
+
+        private void SnakeForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            Keys kp = e.KeyData;
+            if (!GameTimer.Enabled && (kp == Keys.Down || kp == Keys.Right || kp == Keys.Up || kp == Keys.Left))
+            {
+                switch (kp)
+                {
+                    case Keys.Down:
+                        Player1.SetDirection(Direction.down);
+                        break;
+                    case Keys.Up:
+                        Player1.SetDirection(Direction.up);
+                        break;
+                }
+                GameTimer.Enabled = true;
+            }
         }
 
         /*

@@ -101,10 +101,12 @@
             this.Controls.Add(this.Start_Btn);
             this.Controls.Add(this.GameCanvas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SnakeForm";
             this.Text = "Snake";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SnakeForm_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.GameCanvas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

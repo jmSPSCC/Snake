@@ -30,6 +30,7 @@ namespace Snake
         private Direction m_MoveDirection = Direction.none; // Direction of the head
         private int m_PendingSegments; // Number of body parts in queue to be added to the snake
         private SnakeForm GameForm = null; // Stores the GUI form
+        Random random = new Random();
 
         /// <summary>
         /// Object constructor
@@ -37,17 +38,26 @@ namespace Snake
         /// <param name="Form">GUI form for the game</param>
         public SnakePlayer(SnakeForm Form)
         {
+            GameForm = Form;
+            //randomize snake starting position
+            int headX, headY, bodyX, bodyY, tailX, tailY;
+            headX = random.Next(GameForm.Canvas.Left + 60, GameForm.Canvas.Right - 60);
+            headY = random.Next(GameForm.Canvas.Top + 60, GameForm.Canvas.Bottom - 60);
+            bodyX = headX - 20;
+            bodyY = headY;
+            tailX = bodyX - 20;
+            tailY = bodyY;
             // Add 3 body parts to the snake because the snake begins small
-            m_SnakeParts.Add(new BodyPart(100, 0, Direction.right));
-            m_SnakeParts.Add(new BodyPart(80, 0, Direction.right));
-            m_SnakeParts.Add(new BodyPart(60, 0, Direction.right));
+            m_SnakeParts.Add(new BodyPart(headX, headY, Direction.right));
+            m_SnakeParts.Add(new BodyPart(bodyX, bodyY, Direction.right));
+            m_SnakeParts.Add(new BodyPart(tailX, tailY, Direction.right));
 
             // Need to give an initial direction
             m_MoveDirection = Direction.right;
 
             // Currently no body parts queued to be added
             m_PendingSegments = 0;
-            GameForm = Form;
+
         }
 
         /// <summary>
@@ -179,6 +189,7 @@ namespace Snake
         /// <param name="WhichWall">The direction of the wall that the player hit</param>
         public void OnHitWall(Direction WhichWall)
         {
+            GameForm.UpdateHighScores();
             GameForm.ToggleTimer(); // No timer visible on game-over screen
             MessageBox.Show("Hit Wall- GAME OVER"); // Display game-over message
             GameForm.ResetGame();
@@ -190,7 +201,7 @@ namespace Snake
         /// <param name="canvas">The graphics object to render on</param>
         public void Draw(Graphics canvas)
         {
-            Brush SnakeColor = Brushes.Black;
+            Brush SnakeColor = Brushes.ForestGreen;
             List<Rectangle> Rects = GetRects(); // Get the snake body parts, represented as rectangles
             foreach(Rectangle Part in Rects) // Draw each snake body part
             {
@@ -203,6 +214,7 @@ namespace Snake
         /// </summary>
         public void OnHitSelf()
         {
+            GameForm.UpdateHighScores();
             GameForm.ToggleTimer(); // No timer visible on game-over screen
             MessageBox.Show("Hit SELF- GAME OVER"); // Display game-over message
             GameForm.ResetGame();
